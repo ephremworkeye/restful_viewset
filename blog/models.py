@@ -9,10 +9,13 @@ class Author(models.Model):
     username = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     STATUS = (
-        ('Draft', 'draft'),
-        ('Published', 'pulished'),
+        ('draft', 'Draft'),
+        ('published', 'Pulished'),
     )
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
@@ -22,4 +25,7 @@ class Post(models.Model):
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
 
